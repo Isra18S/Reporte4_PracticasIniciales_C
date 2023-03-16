@@ -1,0 +1,73 @@
+<!--
+<div class="col-md-4 offset-md-2 ">
+  <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Registro</h1>
+    <div class="card">
+      <div class="card-body">
+        <form action="">
+            <div class="form-group">
+                <input type="text" name="id" [(ngModel)]="registro.id" placeholder="registro academico" class="form-control" autofocus>
+              </div>
+              <div class="form-group">
+                <input type="text" name="name" [(ngModel)]="registro.name" placeholder="nombre" class="form-control" autofocus>
+              </div>
+          <div class="form-group">
+            <input type="text" name="lastname" [(ngModel)]="registro.lastname" placeholder="apellido" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" [(ngModel)]="registro.password" placeholder="contraseña" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="email"  [(ngModel)]="registro.email" placeholder="correo" class="form-control" autofocus>
+          </div>
+          <button class = "btn btn-success btn-block" (click)="saveNewRegister()" >
+            Save
+          </button>
+          <div>
+            <br><button class = "btn btn-success btn-block" routerLink="/login">
+                Back to LOGIN
+              </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+-->
+      <form className="Principal" action="/login" class="form-signin text-center shadow-lg p-3 ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="black" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+              <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+      <br>
+      <h1 class="h3 mb-3 font-weight-normal">REGISTRO</h1>
+      <form>
+        <div class="form-group">
+          <input type="text" name="id" [(ngModel)]="registro.id" placeholder="Registro academico" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="text" name="name" [(ngModel)]="registro.name" placeholder="Nombre" class="form-control" autofocus>
+        </div>
+    <div class="form-group">
+      <input type="text" name="lastname" [(ngModel)]="registro.lastname" placeholder="Apellido" class="form-control" autofocus>
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" [(ngModel)]="registro.password" placeholder="Contraseña" class="form-control" autofocus>
+    </div>
+    <div class="form-group">
+      <input type="text" name="email"  [(ngModel)]="registro.email" placeholder="Correo" class="form-control" autofocus>
+    </div>
+    <button class = "btn btn-primary btn-block" (click)="saveNewRegister()" >
+      Save
+    </button>
+    <div>
+      <br><button class = "btn btn-sec btn-block text-light"  routerLink="/login">
+          Back to LOGIN
+        </button>
+   
+            </div>
+            <br>
+        </form>
+
+      </form>
+      
+      
+

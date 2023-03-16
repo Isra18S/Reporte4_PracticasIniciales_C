@@ -1,0 +1,35 @@
+.text-center{
+    margin-left: 50px;
+    margin-right: 70px;
+}
+
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    background-color: #f19036 ;
+    border-color: #f19036;
+}
+
+.btn-primary:hover{
+    background-color: #b66420;
+    border-color: #b66420;
+}
+
+.btn-sec, .btn-sec:active, .btn-sec:visited {
+    background-color: #47a5c2 ;
+    border-color: #47a5c2;
+}
+
+.btn-sec:hover{
+    background-color: #2f6fd6;
+    border-color: #2f6fd6;
+}
+.nounderline {
+    text-decoration: none !important
+  }
+
+.form-control {
+    margin-left: 20px;
+  }
+
+h3{
+margin-left: 280px;
+  }

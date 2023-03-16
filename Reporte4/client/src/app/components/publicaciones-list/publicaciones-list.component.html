@@ -1,0 +1,50 @@
+
+    <div class = "container p-10 text-center">
+     
+      <hr/>
+        <form class="form-inline">
+            <h3 >Buscar</h3>
+            
+          <input class="form-control" type="text" placeholder="" aria-label="Search" >
+          <button class="btn btn-dark my-2 my-sm-0 text-center" type="submit">Buscar</button>
+          
+          </form>
+
+          <br>
+
+          <hr/>
+        <h1>Publicaciones : </h1>
+        <div class=" text-center" *ngFor="let publicacion of publicaciones">
+            <br>
+            <div class="card text-center">
+                <div class="card-header ">
+                    <button class="btn btn-danger" (click)="deletePublicacion(publicacion.id)">
+                        <i class="far fa-trash-alt"></i>
+                      </button>
+                      <br>
+                      <br>
+                   <p>Autor: {{publicacion.usuario}}</p> 
+                </div>
+              <div class="card-body text-center">
+                    <p>{{publicacion.mensaje}}</p>
+                    <p>Tema de la publicacion: {{publicacion.tipo }}</p>
+                    <p>Fecha de publicacion: {{publicacion.created_at | date: 'yyyy-MM-dd'}}</p>
+                    <a [routerLink]="['/publicaciones/comentarios', publicacion.id]" class="btn btn-primary btn-block" >
+                      Añadir Comentarios
+                    </a>
+                    <a [routerLink]="['/publicaciones/vercomentarios', publicacion.id]" class="btn btn-sec btn-block">
+                        Ver Comentarios
+                      </a>
+                </div>
+            </div>
+      
+        </div>
+        <br>
+<hr/>
+<h4>PERFILES DISPONIBLES</h4>
+        <div class=" text-center" *ngFor="let registro of registros">
+          <a class="btn btn-success btn-block" [routerLink]="['/perfil', registro.id]">VER PERFIL - {{registro.id}}</a>
+        </div>
+        
+    </div>
+    

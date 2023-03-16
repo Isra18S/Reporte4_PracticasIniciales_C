@@ -1,0 +1,25 @@
+
+    <div class="card">
+      <div class="card-body">
+
+        <form action="">
+          <h3>AGREGAR CURSOS</h3>
+
+         
+          <div class="form-group">
+            
+            <select type="text" name="curso" [(ngModel)]="curso.curso" placeholder="Cursos disponibles" class="form-control" autofocus>
+            <br>
+              <option *ngFor="let curso of cursos" >{{curso.curso}}</option>
+            </select>
+            <br><br>
+        </div>
+
+          <button class = "btn btn-dark btn-block" (click)="saveAprobado()">
+            Guardar Curso aprobado
+          </button>
+        </form>
+
+      </div>
+    </div>
+
