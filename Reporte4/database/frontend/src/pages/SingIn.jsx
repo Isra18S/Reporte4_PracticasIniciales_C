@@ -66,6 +66,7 @@ export default function SingIn() {
                }
                , 
                { path: '/' });
+
                window.location.reload()
             });
          }

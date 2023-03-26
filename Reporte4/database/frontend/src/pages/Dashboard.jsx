@@ -1,7 +1,34 @@
-import { Button } from "@mui/material";
-import React from "react";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+import React, {useState,useEffect} from "react";
+import Filter from "../components/Filter";
+import DialogCreate from "../components/DialogCreate";
+import Cards from "../components/Cards";
+
 export default  function Dashboard() {
+  const [publicaciones, setPublicaciones] = useState([]);
+  const [value, setValue] = useState('5');
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:4200/publicaciones', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(function (response) {
+      if (response.status === 200) {
+        return response.json().then(function (data) {
+          setPublicaciones(data.publicaciones);
+          // console.log(data.publicaciones);
+        });
+      } 
+    }
+    )
+    .catch((error) => {
+      console.error('Error al obtener publicaciones', error);
+    });
+
+  }, [])
 
   function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
@@ -11,50 +38,33 @@ export default  function Dashboard() {
     return color;
   }
 
+  const Card = ( publicacion ) => {
+    return (<Cards publicacion={publicacion} key={publicacion.id_publicacion} id={publicacion.id_publicacion}  color={getRandomColor()}/>)
+  }
+
   return (
    <div className="container">
    <div className="sidebar">
-   <br/>
-   <br/>
-   <br/><br/>
-   <br/>
-   <br/><br/>
-   <br/>
-   <br/><br/>
-   <br/>
-   <br/><br/>
-   <br/>
-   <br/>
-
-      <h1 style={{color:`${getRandomColor()}`}}>Filtros</h1>
-
+     <Filter value={value} setValue={setValue} setName={setName} />
    </div>
    <div className="main">
-     <h1 style={{color:`${getRandomColor()}`}}>contenido</h1>
-     <center>
-        <Button variant="outlined" startIcon={<AddCircleIcon />} >
-        Crear publicación
-        </Button>
-      </center>
-     {
-        [1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10,
-          11,12,13,14,15,16,17,18,19,20,
-        ].map((item,index)=>{
-          return (
-            <div key={index} style={{color:`${getRandomColor()}`}}>
-             
-              <h3>item {index}</h3>
-            </div>
-          )
-        })
-      }
+    <DialogCreate/>
+    {
+      publicaciones.map((publicacion) => {
+        if(value === "1" && publicacion.tipo === 1){
+          return Card(publicacion)
+        }else if(value === "2" && publicacion.tipo === 2){
+          return Card(publicacion)
+        }else if(value === "3" && publicacion.tipo === 1 && publicacion.nombre.toLowerCase().includes(name.toLowerCase())){
+          return Card(publicacion)
+        }else if(value === "4" && publicacion.tipo === 2 && publicacion.nombre.toLowerCase().includes(name.toLowerCase())){
+          return Card(publicacion)
+        }else if(value === "5"){
+          return Card(publicacion)
+        }
+        return null;
+      })
+    }
 
    </div>
  </div>
