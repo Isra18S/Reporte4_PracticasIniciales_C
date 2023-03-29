@@ -16,7 +16,7 @@ SvgIcon
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -30,6 +30,7 @@ function HomeIcon(props) {
 }
 
 export default function NavBar() {
+  const navigate = useNavigate();
   const [abrir, setAbrir] = useState(false);
 
   const handleOpenUserMenu = () => {
@@ -51,7 +52,13 @@ export default function NavBar() {
     window.location.reload()
   };
 
- 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      navigate(`/Perfil/${event.target.value}`);
+      window.location.reload()
+    }
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -65,7 +72,7 @@ export default function NavBar() {
             <DashboardIcon sx={{ fontSize: 40 }} />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          DESARROLLOWEB
+            CampusConnect
           </Typography>
 
           <Paper
@@ -76,6 +83,7 @@ export default function NavBar() {
               sx={{ ml: 1, flex: 1 }}
               placeholder="Carnet"
               inputProps={{ 'aria-label': 'search google maps' }}
+              onKeyDown={handleKeyDown}
             />
             <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
               <SearchIcon />
